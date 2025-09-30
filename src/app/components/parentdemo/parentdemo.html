@@ -1,0 +1,20 @@
+<p>parentdemo works!</p>
+<div class="container text-center">
+    <div class="row">
+        <h4>Parent Component {{a}}</h4>
+        <h4>Parent Component {{child2.b}}</h4>
+        <h4>Parent Component {{parentName}}</h4>
+
+
+    </div>
+    <div class =" row">
+        <div class="col-sm-6">
+            <app-childone [a]="a" [b]="child2.b"></app-childone>
+        </div>
+        <div class="col-sm-6">
+            <app-childtwo [a]="a"
+             #child2 
+             (nameEvent)="receiveDataFromChild($event)"></app-childtwo>
+        </div> 
+    </div>
+</div>

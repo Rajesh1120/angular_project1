@@ -1,0 +1,51 @@
+<p>pipe-demo works!</p>
+<div>{{myName| uppercase}}</div>
+<div>{{myName | lowercase}}</div>
+<div>{{myName | titlecase}}</div>
+
+<div>{{5000 | currency}}</div>
+<div>{{5000 | currency: 'INR'}}</div>
+<div>{{5000   | currency: 'USD': 'code'}}</div>
+<div>{{5000 < 2000 ?  ( 5000 | currency: 'USD': 'code') : (2000 | currency : 'INR')}}</div>
+<div>{{today}}</div>
+<div>{{today | date | uppercase}}</div>
+<div>{{today | date:"shortDate"}}</div>
+<div>{{today | date:"mediumDate"}}</div>
+<div>{{today | date:"longDate"}}</div>
+<div>{{today | date:"shortTime" }}</div>
+<div>{{today | date:"longTime"}}</div>
+<div>{{today | date:"longTime" | 
+    uppercase}}</div>
+<div>{{today | date:"mediumTime"}}</div>
+<div>{{today | date:"MM/dd/yyyy"}}</div> 
+<div>{{today | date:"MMM/dd/yyyy"}}</div> 
+<div>{{today | date:"M/dd/yyyy"}}</div> 
+<div>{{today | date:"MMMM/dd/yyyy"}}</div> 
+
+
+<div>{{12.11322 | number: '3.2-5'}}</div> 
+<!-- 3.2-5 (3 digits before decimal and after decimal minimum 2 max 5 digits) -->
+<div>{{2.15 | number: '2.4-3'}}</div>
+
+<div>{{0.50 | percent}}</div>
+<div>{{0.80 | percent}}</div>
+<div>{{0.74 | percent}}</div>
+
+<div>{{user}}</div>
+<div>{{user | json}}</div>
+@for(entry of user |  keyvalue ; track $index){
+    <div>{{entry.key}} ===== {{entry.value}}</div>
+}
+
+<input type="number" [(ngModel)]="num">
+<div>{{num | oridinal}}</div>
+
+
+
+
+
+
+
+
+
+

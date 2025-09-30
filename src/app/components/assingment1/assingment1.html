@@ -1,0 +1,94 @@
+<p>assingment1 works!</p>
+
+<div style="color: red">
+  1. ⁠Have a paragraph & a toggle button, on click of the button control the visibility(Show/Hide)
+  of the paragraph
+</div>
+<button (click)="toggleButton()">{{ flag ? 'Show' : 'Hide' }} paragraph</button>
+<p [class.hide]="flag">
+  Angular is a web framework that empowers developers to build fast, reliable
+  applications.Maintained by a dedicated team at Google, Angular provides a broad suite of tools,
+  APIs, and libraries to simplify and streamline your development workflow. Angular gives you a
+  solid platform on which to build fast, reliable applications that scale with both the size of your
+  team and the size of your codebase.
+</p>
+
+<br /><br />
+<div style="color: red">
+  2.⁠ ⁠Create a text-area with maxLength=100, as the user keeps typing display updated Remaining
+  characters.
+</div>
+<textarea maxlength="100" [(ngModel)]="characters"></textarea>
+<p>RemainingCharacters:- {{ 100 - characters.length }}</p>
+
+<br /><br />
+<div style="color: red">
+  3.⁠ ⁠Create dropdown with state names, when user changes dropdown value, print the selected
+  dropdown value in a div
+</div>
+<select [(ngModel)]="states" id="">
+  <option value="TS">Telangana</option>
+  <option value="AP">Andra Pradesh</option>
+  <option value="Gu">Gujarat</option>
+</select>
+<div>
+  {{ states }}
+</div>
+<br /><br />
+<div style="color: red">
+  4. have 2 inputBoxes, and a dropdown(+,-,*,/) and perform arithmetic operations
+</div>
+number 1:<input type="number" [(ngModel)]="num1" /> number 2:<input
+  type="number"
+  [(ngModel)]="num2"
+/>
+<select [(ngModel)]="operations">
+  <option value="+">+</option>
+  <option value="-">-</option>
+  <option value="*">*</option>
+  <option value="/">/</option>
+</select>
+<!-- do with template reference -->
+<button (click)="arithmeticOp()">click Here</button>
+<p>Result: {{ result }}</p>
+<br />
+<br />
+
+
+<div style="color: red">
+  5.⁠create a input box, toggle the type of that input box to (text/password)
+</div>
+
+<input [type]="toggle ? 'text' : 'password'" />
+<button (click)="textPassword()">{{ toggle ? 'text' : 'password' }}</button>
+<br />
+<br />
+<div style="color: red">
+  6.⁠create a counter example with 3 controls(increment,decrement,reset)</div>
+<p>Count:{{ count }}</p>
+<button (click)="increment()">Increment</button>
+<button (click)="decrement()">Decrement</button>
+<button (click)="reset()">Reset</button>
+<br />
+<br />
+
+<div style="color: red">7.Have a toggle button and control Dark/Light theme of a page.</div>
+
+<button (click)="toggleTheme()">
+  {{ isDark ? 'Switch to Light' : 'Switch to Dark' }}
+</button>
+
+<div [class.dark-theme]="isDark" [class.light-theme]="!isDark">
+  <p>This is a sample content area. Watch me change colors!</p>
+</div>
+
+<br />
+<br />
+
+<div style="color: red">8.⁠ ⁠Temperature Converter (celcius to fahrenheit)</div>
+
+<div>
+  celsius: <input type="number" [(ngModel)]="celsius" />
+  <button (click)="converter()">Convert</button>
+  <p>Fahrenheit:-{{ fahrenheit }}</p>
+</div>

@@ -1,0 +1,232 @@
+<p>assignment2 works!</p>
+<!-- Directive Assignment:
+====================
+1. Declare an array of users, display users in card & table format. 
+ add a button/switch to toggle between table view and card view.
+ https://jsonplaceholder.typicode.com/users -->
+
+<button (click)="shiftToggle()">{{toggle?'Show Card': 'Show Table'}}</button>
+@if(toggle){
+    <div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <td>User Id</td>
+              <td>Name</td>
+              <td>UserName</td>
+              <td>street</td>
+              <td>suite</td>
+              <td>city</td>
+              <td>zipcode</td>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody>
+            @for(user of users; track $index){
+            <tr>
+              <td>{{ user.id }}</td>
+              <td>{{ user.name }}</td>
+              <td>{{ user.username }}</td>
+              <td>{{ user.address.street }}</td>
+              <td>{{ user.address.suite }}</td>
+              <td>{{ user.address.city }}</td>
+              <td>{{ user.address.zipcode }}</td>
+              <td>{{ user.address.geo.lat }}</td>
+              <td>{{ user.address.geo.lng }}</td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+      <br />
+      <br />
+      
+}@else{
+    @for(user of users; track $index){
+        <div class="row">
+            @for (user of users; track user.id) {
+              <div class="col-sm-3 mb-3">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <p class="card-text">ID: {{ user.id }}</p>
+                    <h5 class="card-title"> User Name : {{ user.username }}</h5>
+                    <h6 class="card-title"> Address</h6>
+                    <p class="card-text">Street: {{ user.address.street }}</p>
+                    <p class="card-text">Suite : {{ user.address.suite }}</p>
+                    <p class="card-text">City: {{ user.address.city }}</p>
+                    <p class="card-text">Zipcode: {{ user.address.zipcode }}</p>
+                    <a href="#" class="btn btn-primary">Longitude: {{ user.address.geo.lng }}</a>
+                    <a href="#" class="btn btn-primary">Latitude: {{ user.address.geo.lat }}</a>
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+          
+    }
+}
+
+
+
+<!-- employees = [
+  { id: 1, name: 'John', role: 'Manager', salary: 85000, status: 'Active' },
+  { id: 2, name: 'Alice', role: 'Developer', salary: 45000, status: 'Active' },
+  { id: 3, name: 'Bob', role: 'Tester', salary: 30000, status: 'Inactive' },
+  { id: 4, name: 'Eve', role: 'HR', salary: 40000, status: 'Active' }
+];-->
+
+<div>
+    2.⁠ ⁠Display Array of employees in a table
+   a. Display Salary in green  if salary > 50000, else Display Salary in red, using [ngStyle]
+
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td>emp id</td>
+      <td>emp name</td>
+      <td>role</td>
+      <td>salary</td>
+      <td>status</td>
+    </tr>
+  </thead>
+  <tbody>
+    @for(emp of employees; track $index){
+    <tr>
+      <td>{{ emp.id }}</td>
+      <td>{{ emp.name }}</td>
+      <td>{{ emp.role }}</td>
+
+      <td [ngStyle]="{color: emp.salary > 50000 ? 'green' : 'red'}">{{ emp.salary }}</td>
+
+      <td>{{ emp.status }}</td>
+    </tr>
+    }
+    
+  </tbody>
+</table>
+<br>
+<div>
+    b. Apply a CSS class "inactive" to employees whose status is "Inactive" using [ngClass]
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td>emp id</td>
+      <td>emp name</td>
+      <td>role</td>
+      <td>salary</td>
+      <td>status</td>
+    </tr>
+  </thead>
+  <tbody>
+    @for(emp of employees; track $index){
+    <tr>
+      <td>{{ emp.id }}</td>
+      <td>{{ emp.name }}</td>
+      <td>{{ emp.role }}</td>
+
+      <td>{{ emp.salary }}</td>
+      <td [ngClass]="{ inactive: emp.status === 'Inactive' }">{{ emp.status }}</td>
+    </tr>
+    }
+  </tbody>
+</table>
+<br>
+<div>
+    c. Add bold font and blue color only for employees whose role is "Manager" using [ngClass]
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td>emp id</td>
+      <td>emp name</td>
+      <td>role</td>
+      <td>salary</td>
+      <td>status</td>
+    </tr>
+  </thead>
+  <tbody>
+    @for(emp of employees | paginate: { itemsPerPage: 10, currentPage: p } ;track $index){
+    <tr>
+      <td>{{ emp.id }}</td>
+      <td>{{ emp.name }}</td>
+      <td [ngClass]="{ applyStyle: emp.role === 'Manager' }">{{ emp.role }}</td>
+      <td>{{ emp.salary }}</td>
+      <td>{{ emp.status }}</td>
+    </tr>
+    }
+  </tbody>
+</table>
+<br>
+<div>
+    d. Apply a different row background color based on employee role:
+    Manager = lightyellow , Developer = lightblue , Tester = lightpink
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td>emp id</td>
+      <td>emp name</td>
+      <td>role</td>
+      <td>salary</td>
+      <td>status</td>
+    </tr>
+  </thead>
+  <tbody>
+    @for(emp of employees; track $index){
+    <tr>
+      <td>{{ emp.id }}</td>
+      <td>{{ emp.name }}</td>
+      <td
+        [class.appManager]="emp.role === 'Manager'"
+        [class.appDeveloper]="emp.role === 'Developer'"
+        [class.appTester]="emp.role === 'Tester'"
+      >
+        {{ emp.role }}
+      </td>
+
+      <td>{{ emp.salary }}</td>
+      <td>{{ emp.status }}</td>
+    </tr>
+    }
+  </tbody>
+</table>
+<div >
+    e. Show salary in a badge style with dynamic color
+      Green if salary > 70,000 , Orange if between 40,000–70,000, Red if < 40,000
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td>emp id</td>
+      <td>emp name</td>
+      <td>role</td>
+      <td>salary</td>
+      <td>status</td>
+    </tr>
+  </thead>
+  <tbody>
+    @for(emp of employees; track $index){
+    <tr>
+      <td>{{ emp.id }}</td>
+      <td>{{ emp.name }}</td>
+      <td>{{ emp.role }}</td>
+      <td
+        [ngClass]="{
+          'badge-green': emp.salary > 70000,
+          'badge-orange': emp.salary >= 40000 && emp.salary <= 70000,
+          'badge-red': emp.salary < 40000
+        }"
+      >
+        {{ emp.salary }}
+      </td>
+      <td>{{ emp.status }}</td>
+    </tr>
+    }
+  </tbody>
+</table>

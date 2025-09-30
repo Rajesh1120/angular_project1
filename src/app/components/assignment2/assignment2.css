@@ -1,0 +1,37 @@
+.inactive {
+    color: red;        /* text turns red */
+    font-weight: bold; /* make it bold */
+     /* light red background */
+  }
+  .applyStyle{
+    font-weight: bold;
+    color: blue;
+  }
+
+.appManager{
+    background-color:lightyellow
+  }
+.appDeveloper{
+   background-color:lightblue
+}
+.appTester{
+    background-color:lightpink
+}
+.badge-green {
+    background-color: green;
+    color: white;
+    
+  }
+  
+  .badge-orange {
+    background-color: orange;
+    color: white;
+  
+  }
+  
+  .badge-red {
+    background-color: red;
+    color: white;
+   
+  }
+  
