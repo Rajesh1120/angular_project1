@@ -1,0 +1,36 @@
+<p>modeldriven-form works!</p>
+
+<div>
+    <form [formGroup]="registerForm">
+        <p>
+        First Name:
+        <input   formControlName="firstname"/>
+   
+      </p>
+      <p>
+        Last Name:
+        <input  formControlName="lastname" />
+      </p>
+      <p>
+        Email:
+        <input  formControlName="email"  />
+      </p>
+      <div formControlGroup="address">
+        <p>
+          City:
+          <input formControlName="city"/>
+        </p>
+        <p>
+          State:
+          <input formControlName="state" />
+        </p>
+        <p>
+          Pincode:
+          <input formControlName="pinCode" />
+        </p>
+      </div>
+    
+    </form>
+
+    
+</div>
