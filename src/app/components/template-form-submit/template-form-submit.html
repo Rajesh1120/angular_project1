@@ -1,0 +1,68 @@
+<p>Employee Registration</p>
+
+<form #registerFrom="ngForm" (submit)="onSubmit(registerFrom)">
+  <p>
+    <label> First Name: </label>
+    <input type="text"  name="firstName" #firstName="ngModel" ngModel minlength="5" required [(ngModel)]="registerUser.firstName" />
+  </p>
+  @if(firstName.hasError('required') && firstName.touched){
+    <p class="text-danger">First name is required</p>
+  }
+  @if(firstName.invalid && firstName.touched){
+    <p class="text-danger">Length of the First name should be greater than 5</p>
+  }
+    
+  <p>
+    <label for="lastname">Last Name: </label>
+    <input type="text"  name="lastName" minlength="5" required  #lastName="ngModel"  [(ngModel)]="registerUser.lastName"  />
+  </p>
+  @if(lastName.hasError('required') && lastName.touched){
+    <p class="text-danger">Last name is required</p>
+  }
+  @if(lastName.invalid && lastName.touched){
+    <p class="text-danger">Length of the Last name should be greater than 5</p>
+  }
+  <p>
+    <label >Email: </label>
+    <input type="email" name="email"  #email="ngModel"  [(ngModel)]="registerUser.email" />
+  </p>
+  @if(email.hasError('required') && email.touched){
+    <p class="text-danger"> Email is required</p>
+  }
+  @if(email.value.indexOf('@') == -1 && email.touched){
+    <p class="text-danger">Your missing "@"</p>
+  }
+  <p>
+    <label >Gender </label>
+    <input type="radio" value="male"  name="gender"  #gender="ngModel" required  [(ngModel)]="registerUser.gender" /> Male
+    <input type="radio" value="female"  name="gender" #gender="ngModel"  required [(ngModel)]="registerUser.gender"/> Female
+  </p>
+  <!-- @if(gender.hasError('required')){
+    <p class="text-danger">First name is required</p>
+  } -->
+
+  <p ngModelGroup="department">
+    <label>Department</label>
+     <input type="checkbox" value="development" name="development"  (change)="onChangeCheckbox($event)" ngModel />Development 
+     <input type="checkbox" value="testing" name="testing" ngModel (change)="onChangeCheckbox($event)" />testing 
+     <input type="checkbox" value="devops" name="devops" ngModel (change)="onChangeCheckbox($event)"  />devops 
+  </p>
+  <p >
+    State:
+    <select name="state"  required [(ngModel)]="registerUser.state" >
+      <option value="kansas"  >Kansas</option>
+      <option value="Texas" >Texas</option>
+      <option value="Missouri" >Missouri</option>
+    </select>
+  </p>
+  
+  <p>
+    <label>comments:</label>
+    <input type="textarea" name="comments"   ngModel [(ngModel)]="registerUser.comments"/>
+  </p>
+  <p>
+    <input type="submit" [disabled]="registerFrom.invalid" value="submit" class="mx-1 btn btn-primary">
+  </p>
+  <input type="reset" value="Clear" class="mx-1 btn btn-danger">
+  {{ registerFrom.value | json}}
+</form>

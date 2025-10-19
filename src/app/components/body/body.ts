@@ -11,15 +11,25 @@ import { Childone } from '../childone/childone';
 import { Formdemo1 } from '../formdemo1/formdemo1';
 import { TemplateFormDemo1 } from '../template-form-demo1/template-form-demo1';
 import { ModeldrivenForm } from '../modeldriven-form/modeldriven-form';
+import { TemplateFormSubmit } from '../template-form-submit/template-form-submit';
+import { DynamicForm } from '../dynamic-form/dynamic-form';
+import { RouterOutlet } from '@angular/router';
+import { Navbar } from '../navbar/navbar';
 
 @Component({
   selector: 'app-body',
-  imports: [Assignment3, NgxPaginationModule,
+  imports: [
+    //Assignment3, NgxPaginationModule,
     //PipesAssginment, 
-    Formdemo1,
-    ModeldrivenForm,
-    TemplateFormDemo1,
-    PipeDemo, Mymodel,Parentdemo, Assignment4],
+   // Formdemo1,
+   // ModeldrivenForm,
+   // TemplateFormDemo1,
+  //  DynamicForm,
+    // TemplateFormSubmit,
+   // PipeDemo, Mymodel,Parentdemo, Assignment4
+   Navbar,
+   RouterOutlet
+  ],
   templateUrl: './body.html',
   styleUrl: './body.css'
 })
