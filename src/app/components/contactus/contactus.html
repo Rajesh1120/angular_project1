@@ -1,1 +1,17 @@
 <p>contactus works!</p>
+<form #controlformData="ngForm" (ngSubmit)="onSubmit(controlformData)">
+    <label>
+      field1:
+      <input type="text" name="field1" [(ngModel)]="formData.field1" placeholder="Enter your filed1">
+    </label>
+    <label>
+      field2:
+      <input type="text" name="field2" [(ngModel)]="formData.field2" placeholder="Enter your filed2">
+    </label>
+    <button type="submit" >Submit</button>
+    
+  </form>
+  {{formData | json }}
+  hasChanges: {{hasChanges}}
+
+ 

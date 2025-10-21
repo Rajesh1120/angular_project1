@@ -8,6 +8,7 @@ import { PermanentJobs } from './components/permanent-jobs/permanent-jobs';
 import { ContractJobs } from './components/contract-jobs/contract-jobs';
 import { UploadVideo } from './components/upload-video/upload-video';
 import { teacherGuard} from './guards/teacher-guard-guard';
+import { canExitGuard } from './guards/can-exit-guard';
 
 export const routes: Routes = [
     {path:'', component:Home},
@@ -22,7 +23,9 @@ export const routes: Routes = [
         ]
 
     },
-    {path:"contactus", component:Contactus},
+    {path:"contactus", component:Contactus,
+        canDeactivate:[canExitGuard]
+    },
 
     // {path:"users", component:UserComponenet},
     {path:"products", component:ProductItem},

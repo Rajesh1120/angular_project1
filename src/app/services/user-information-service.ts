@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserInformationService {
-  userRole:any="student";
+  userRole:any="teacher";
   
   getUserRole(){
     return this.userRole;
