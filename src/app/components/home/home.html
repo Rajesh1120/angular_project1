@@ -1,1 +1,8 @@
 <p>home works!</p>
+
+@defer {
+    <ng-container *ngComponentOutlet="largecomponent"></ng-container>
+  } @placeholder(minimum 500ms) {
+    <p>Loading large component...</p>
+  }
+  

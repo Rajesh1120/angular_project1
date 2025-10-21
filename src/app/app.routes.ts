@@ -28,7 +28,9 @@ export const routes: Routes = [
     },
 
     // {path:"users", component:UserComponenet},
-    {path:"products", component:ProductItem},
+    {path:"products", component:ProductItem,
+        loadComponent:()=>import("./components/product-item/product-item").then((x)=>x.ProductItem)
+    },
     {path:"uploadvideo", component:UploadVideo,
     canActivate:[teacherGuard]
     }
